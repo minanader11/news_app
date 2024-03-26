@@ -22,14 +22,21 @@ class SourcesTabBar extends StatefulWidget {
 
 class _SourcesTabBarState extends State<SourcesTabBar> {
   int selectedIndex = 0;
+  //var sourceProvider=SourceProvider();
 
 
+// SourceProvider sourceProvider=SourceProvider();
+@override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   sourceProvider.changeSource(widget.sources[selectedIndex]);
+  // }
 
-  @override
   Widget build(BuildContext context) {
-  var  navigationProvider=Provider.of<NavigationProvider>(context);
-  var sourceProvider=Provider.of<SourceProvider>(context);
-  var categoryProvider=Provider.of<CategoryProvider>(context);
+    var sourceProvider=Provider.of<SourceProvider>(context);
+
+
  // navigationProvider.changeSourceId(widget.sources[selectedIndex].id??'');
   //if(sourceProvider.source.id==null){
    //sourceProvider.changeSource(widget.sources[0]);
@@ -38,6 +45,7 @@ class _SourcesTabBarState extends State<SourcesTabBar> {
   if(sourceProvider.source!= widget.sources[selectedIndex]){
     sourceProvider.changeSource(widget.sources[selectedIndex]);
   }
+
     return DefaultTabController(
       length: widget.sources.length,
       child: Column(

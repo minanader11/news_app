@@ -4,10 +4,12 @@ import 'package:news_app/core/api_constants.dart';
 import 'package:news_app/screens/home_screen/data/models/newsResponse.dart';
 import 'package:news_app/screens/home_screen/data/models/sourcesResponse.dart';
 class ApiService {
-  static Future<SourcesResponse> getSources(String categoryId)async{
+  static Future<SourcesResponse> getSources(String categoryId,String country)async{
     Uri url = Uri.https(ApiConstants.baseUrl,ApiConstants.sourcesApi,{
       'apiKey': ApiConstants.apiKey,
       'category': categoryId,
+
+      'language':country
     });
     try {
       var response = await http.get(url);
@@ -18,11 +20,13 @@ class ApiService {
       throw e;
     }
   }
-  static Future<NewsResponse> getNews(String sourceId, String categoryId)async{
+  static Future<NewsResponse> getNews(String sourceId, String categoryId,String language)async{
     Uri url = Uri.https(ApiConstants.baseUrl,ApiConstants.newsApi,{
       'apiKey': ApiConstants.apiKey,
       'sources': sourceId,
       'q': categoryId,
+      'language': language,
+
 
     });
     try {

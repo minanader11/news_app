@@ -8,6 +8,7 @@ import 'package:news_app/screens/home_screen/data/models/sourcesResponse.dart';
 import 'package:news_app/screens/home_screen/presentaion/views/categories_view.dart';
 import 'package:news_app/screens/home_screen/presentaion/views/category_details_view.dart';
 import 'package:news_app/screens/home_screen/presentaion/views/widgets/MyDrawer.dart';
+import 'package:news_app/screens/home_screen/presentaion/views/widgets/settings_view.dart';
 import 'package:news_app/screens/home_screen/presentaion/views/widgets/sources_tabbar.dart';
 import 'package:provider/provider.dart';
 
@@ -40,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Scaffold(
           drawer: MyDrawer(),
           appBar: //navigationProvider.searchIndex == 0 &&
+          navigationProvider.navigationIndex== SettingsView.settingsView? null:
               navigationProvider.navigationIndex ==
                       CategoriesView.categoriesview
                   ? AppBar(
@@ -66,7 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         navigationProvider.navigationIndex ==
                                 CategoriesView.categoriesview
                             ? 'News'
-                            : categoryProvider.category.title,
+
+                        : categoryProvider.category.title,
+
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!
@@ -120,7 +124,10 @@ class _HomeScreenState extends State<HomeScreen> {
           body: navigationProvider.navigationIndex ==
                   CategoriesView.categoriesview
               ? CategoriesView()
-              : CategoryDetailsView(),
+              : navigationProvider.navigationIndex ==
+    CategoryDetailsView.categoriesDetailsView
+          ?CategoryDetailsView()
+          : SettingsView(),
         ),
       ],
     );

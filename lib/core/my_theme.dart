@@ -14,7 +14,7 @@ class MyTheme {
   static const grayColor = Color(0xFF79828B);
 
   static ThemeData lightTheme = ThemeData(
-    appBarTheme: AppBarTheme(actionsIconTheme: IconThemeData(color: whiteColor),
+    appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: whiteColor),actionsIconTheme: IconThemeData(color: whiteColor),
       backgroundColor: primaryColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(

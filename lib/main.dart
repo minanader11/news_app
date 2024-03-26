@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/app_config_provider.dart';
 import 'package:news_app/core/category_provider.dart';
 import 'package:news_app/core/my_theme.dart';
 import 'package:news_app/core/navigation_provider.dart';
@@ -11,6 +12,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => AppConfigProvider(),),
     ChangeNotifierProvider(
       create: (context) => NavigationProvider(),
     ),

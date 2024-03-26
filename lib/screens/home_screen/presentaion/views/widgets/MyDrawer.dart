@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/core/my_theme.dart';
 import 'package:news_app/core/navigation_provider.dart';
 import 'package:news_app/screens/home_screen/presentaion/views/categories_view.dart';
+import 'package:news_app/screens/home_screen/presentaion/views/widgets/settings_view.dart';
 import 'package:provider/provider.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -26,7 +27,8 @@ class MyDrawer extends StatelessWidget {
             navigationProvider.changeNavigationIndex(CategoriesView.categoriesview);
             navigationProvider.changeSearchNews('');
             if(navigationProvider.isSearching==true){
-            navigationProvider.changeSearchingState();}
+            navigationProvider.changeSearchingState();
+            }
             navigationProvider.changeSearchIndex(0);
             Navigator.of(context).pop();
           },
@@ -48,6 +50,12 @@ class MyDrawer extends StatelessWidget {
           ),
           SizedBox(height: 10,),
           InkWell(onTap: (){
+            navigationProvider.changeNavigationIndex(SettingsView.settingsView);
+            navigationProvider.changeSearchNews('');
+            if(navigationProvider.isSearching==true){
+              navigationProvider.changeSearchingState();
+            }
+            navigationProvider.changeSearchIndex(0);
             Navigator.of(context).pop();
           },
             child: Row(
